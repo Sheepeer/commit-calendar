@@ -1,0 +1,49 @@
+.wrapper {
+  display: flex;
+}
+.week-labels-wrapper {
+  padding-top: 18px;
+  margin-right: 6px;
+}
+.week-label {
+  margin: 5px 0;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
+  text-align: right;
+}
+.table-thead-tr {
+  position: relative;
+}
+.table-thead-th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 400;
+}
+.table-tbody-td {
+  box-sizing: border-box;
+  height: 12px;
+  width: 12px;
+  border-radius: 2px;
+  background-color: rgb(248, 248, 248);
+  border: 1px solid rgb(228, 228, 228);
+}
+.table-tbody-td-none {
+  background-color: rgb(248, 248, 248);
+}
+.table-tbody-td-low {
+  background-color: rgb(185, 227, 185);
+}
+.table-tbody-td-middle {
+  background-color: rgb(127, 190, 127);
+}
+.table-tbody-td-high {
+  background-color: rgb(49, 153, 49);
+}
+.table-tbody-td-super {
+  background-color: rgb(14, 100, 21);
+}
+.table-tbody-td-div {
+  height: 12px;
+  width: 12px;
+}

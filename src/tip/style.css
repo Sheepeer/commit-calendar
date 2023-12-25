@@ -1,0 +1,19 @@
+.tip-wrapper {
+  position: relative;
+}
+.tip-children {
+  cursor: pointer;
+}
+.tip-content {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  padding: 2px 6px;
+  display: block;
+  font-size: small;
+  color: rgb(237, 237, 237);
+  background-color: rgb(40, 40, 40);
+  border-radius: 2px;
+  white-space: nowrap;
+  transition: 0.3s;
+}
