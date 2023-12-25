@@ -1,6 +1,7 @@
 import React from "react";
 import Calendar from "../../src";
 import { render } from "react-dom";
+import './style.css'
 
 const dates = [
   { date: "2023-01-02", count: 3 },
@@ -11,7 +12,12 @@ const dates = [
 ];
 
 const App = () => {
-  return <Calendar dataSource={dates} />;
+  return (
+    <div className="eg-root">
+      <h1>Example for commit calendar</h1>
+      <Calendar dataSource={dates} />
+    </div>
+  );
 };
 
 render(<App />, document.getElementById("root"));
