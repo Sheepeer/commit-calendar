@@ -126,8 +126,8 @@ const Calendar = ({ dataSource }) => {
                   className={`table-tbody-td table-tbody-td-${getColor(count)}`}
                 >
                   <Tip
-                    message={`${month + 1}月${day}日${
-                      count ? `，数量：${count}` : ""
+                    message={`${month + 1}.${day}${
+                      count ? `, count is ${count}` : ""
                     }`}
                   >
                     <div className="table-tbody-td-div"></div>
