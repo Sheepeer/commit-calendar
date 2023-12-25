@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 import dayjs from "dayjs";
 import Tip from "./tip";
+import { MONTHES, WEEKS } from "./enums";
 
 const getColor = (count) => {
   if (count <= 0) {
@@ -18,22 +19,6 @@ const getColor = (count) => {
 };
 
 const Calendar = ({ dataSource }) => {
-  const rows = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  const cols = ["Mon", "Tues", "Thur", "Wen", "Fri", "Sat", "Sun"];
-
   const [dates, setDates] = useState([[], [], [], [], [], [], []]);
   const [headers, setHeaders] = useState([]);
 
@@ -98,11 +83,15 @@ const Calendar = ({ dataSource }) => {
   return (
     <div className="wrapper">
       <div className="week-labels-wrapper">
-        {cols.map((item, index) => {
+        {WEEKS.map((item, index) => {
           if (index % 3 !== 0) {
-            return <div className="week-label"></div>;
+            return <div key={item} className="week-label"></div>;
           } else {
-            return <div className="week-label">{item}</div>;
+            return (
+              <div key={item} className="week-label">
+                {item}
+              </div>
+            );
           }
         })}
       </div>
@@ -111,18 +100,19 @@ const Calendar = ({ dataSource }) => {
         <thead>
           <tr className="table-thead-tr">
             {Array.from(headers).map(([week, count]) => (
-              <th colSpan={count} className="table-thead-th">
-                {rows[week]}
+              <th key={week} colSpan={count} className="table-thead-th">
+                {MONTHES[week]}
               </th>
             ))}
           </tr>
         </thead>
 
         <tbody>
-          {dates.map((cols) => (
-            <tr>
-              {cols.map(([month, day, count]) => (
+          {dates.map((cols, index) => (
+            <tr key={index}>
+              {cols.map(([month, day, count], index) => (
                 <td
+                  key={index}
                   className={`table-tbody-td table-tbody-td-${getColor(count)}`}
                 >
                   <Tip

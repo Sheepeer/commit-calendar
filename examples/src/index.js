@@ -1,6 +1,7 @@
 import React from "react";
 import Calendar from "../../src";
 import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import "./style.css";
 
 const dates = [
@@ -22,4 +23,5 @@ const App = () => {
   );
 };
 
-render(<App />, document.getElementById("root"));
+const root = createRoot(document.getElementById("root"));
+root.render(<App />);
