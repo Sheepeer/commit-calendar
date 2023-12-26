@@ -1,46 +1,42 @@
-import React, { useEffect, useState } from "react";
+import * as React from "react";
+import { useEffect, useState } from "react";
 import "./style.css";
-import dayjs from "dayjs";
+import * as dayjs from "dayjs";
 import Tip from "./tip";
 import { MONTHES, WEEKS } from "./enums";
+import { getColor, handleDateSource } from "./utils";
 
-const getColor = (count) => {
-  if (count <= 0) {
-    return "none";
-  } else if (count > 0 && count <= 1) {
-    return "low";
-  } else if (count <= 3) {
-    return "middle";
-  } else if (count <= 5) {
-    return "high";
-  } else if (count > 5) {
-    return "super";
-  }
-};
+export type IDate = string | number | Date | dayjs.Dayjs;
 
-const Calendar = ({ dataSource }) => {
+export type DataSource = Array<{
+  date: IDate;
+  count: number;
+}>;
+
+interface CalendarProps {
+  dataSource: DataSource;
+  year?: string; // 2023-01-01
+}
+
+const Calendar = ({ dataSource, year = '2023-01-01' }: CalendarProps) => {
   const [dates, setDates] = useState([[], [], [], [], [], [], []]);
   const [headers, setHeaders] = useState([]);
 
-  const handleDateSource = () => {
-    if (Array.isArray(dataSource) && dataSource.length > 0) {
-      return dataSource.map(({ date, count }) => {
-        const w = dayjs(date).get("day");
-        const m = dayjs(date).get("month");
-        const d = dayjs(date).get("date");
-        return { date, count, w, m, d };
-      });
-    }
-  };
-
   const getDateArr = () => {
-    const dateSrc = handleDateSource();
+    const dateSrc = handleDateSource(dataSource);
 
-    const _dates = [[], [], [], [], [], [], []];
+    const _dates: Array<Array<[number, number] | [number, number, number]>> = [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+    ];
 
-    const startDate = dayjs("2020-01-01").startOf("year");
-    const endDate = dayjs("2020-01-01").endOf("year");
-    console.log(startDate, endDate);
+    const startDate = dayjs(year).startOf("year");
+    const endDate = dayjs(year).endOf("year");
 
     let currDate = startDate;
 
@@ -65,11 +61,11 @@ const Calendar = ({ dataSource }) => {
     for (let itemArr of _dates) {
       const [month, day] = itemArr[0];
       if (day > _dates[6][0][1]) {
-        itemArr.unshift([undefined, undefined]);
+        // [0, 0]则不渲染
+        itemArr.unshift([0, 0]);
       }
     }
     setDates(_dates);
-    console.log(_dates);
 
     const singleLine = _dates[6].map((item) => item[0]);
     const _headers = new Map();
@@ -81,7 +77,7 @@ const Calendar = ({ dataSource }) => {
       }
     }
 
-    setHeaders(_headers);
+    setHeaders(Array.from(_headers));
   };
 
   useEffect(() => {
@@ -107,7 +103,7 @@ const Calendar = ({ dataSource }) => {
       <table>
         <thead>
           <tr className="table-thead-tr">
-            {Array.from(headers).map(([week, count]) => (
+            {headers.map(([week, count]: any) => (
               <th key={week} colSpan={count} className="table-thead-th">
                 {MONTHES[week]}
               </th>

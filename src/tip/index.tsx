@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import * as React from "react";
+import { useState } from "react";
 import "./style.css";
 
-const Tip = ({ message, children }) => {
+interface TipProps {
+  message: string;
+  children: React.ReactNode;
+}
+
+const Tip = ({ message, children }: TipProps) => {
   const [show, setShow] = useState(false);
 
   return (

@@ -1,6 +1,5 @@
-import React from "react";
+import * as React from "react";
 import Calendar from "../../src";
-import { render } from "react-dom";
 import { createRoot } from "react-dom/client";
 import "./style.css";
 
@@ -18,7 +17,7 @@ const App = () => {
   return (
     <div className="eg-root">
       <h1>Example for commit calendar</h1>
-      <Calendar dataSource={dates} />
+      <Calendar dataSource={dates}  />
     </div>
   );
 };
