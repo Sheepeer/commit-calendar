@@ -38,8 +38,9 @@ const Calendar = ({ dataSource }) => {
 
     const _dates = [[], [], [], [], [], [], []];
 
-    const startDate = dayjs().startOf("year");
-    const endDate = dayjs().endOf("year");
+    const startDate = dayjs("2020-01-01").startOf("year");
+    const endDate = dayjs("2020-01-01").endOf("year");
+    console.log(startDate, endDate);
 
     let currDate = startDate;
 
@@ -61,7 +62,14 @@ const Calendar = ({ dataSource }) => {
       currDate = currDate.add(1, "day");
     }
 
+    for (let itemArr of _dates) {
+      const [month, day] = itemArr[0];
+      if (day > _dates[6][0][1]) {
+        itemArr.unshift([undefined, undefined]);
+      }
+    }
     setDates(_dates);
+    console.log(_dates);
 
     const singleLine = _dates[6].map((item) => item[0]);
     const _headers = new Map();
@@ -110,20 +118,28 @@ const Calendar = ({ dataSource }) => {
         <tbody>
           {dates.map((cols, index) => (
             <tr key={index}>
-              {cols.map(([month, day, count], index) => (
-                <td
-                  key={index}
-                  className={`table-tbody-td table-tbody-td-${getColor(count)}`}
-                >
-                  <Tip
-                    message={`${month + 1}.${day}${
-                      count ? `, count is ${count}` : ""
-                    }`}
-                  >
-                    <div className="table-tbody-td-div"></div>
-                  </Tip>
-                </td>
-              ))}
+              {cols.map(([month, day, count], index) => {
+                if (day) {
+                  return (
+                    <td
+                      key={index}
+                      className={`table-tbody-td table-tbody-td-${getColor(
+                        count
+                      )}`}
+                    >
+                      <Tip
+                        message={`${month + 1}.${day}${
+                          count ? `, count is ${count}` : ""
+                        }`}
+                      >
+                        <div className="table-tbody-td-div"></div>
+                      </Tip>
+                    </td>
+                  );
+                } else {
+                  return <td key={index} />;
+                }
+              })}
             </tr>
           ))}
         </tbody>

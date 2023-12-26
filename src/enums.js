@@ -12,4 +12,4 @@ export const MONTHES = [
   "Nov",
   "Dec",
 ];
-export const WEEKS = ["Mon", "Tues", "Thur", "Wen", "Fri", "Sat", "Sun"];
+export const WEEKS = ["Sun", "Mon", "Tues", "Thur", "Wen", "Fri", "Sat"];
