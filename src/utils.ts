@@ -1,31 +1,51 @@
 import { DataSource, IDate, RangeItem } from ".";
 import * as dayjs from "dayjs";
 
-export const getColor = (count: number, range: RangeItem) => {
-  if (count <= 0) {
-    return "none";
-  } else if (count > 0 && count <= 1) {
-    return "low";
-  } else if (count <= 3) {
-    return "middle";
-  } else if (count <= 5) {
-    return "high";
-  } else if (count > 5) {
-    return "super";
-  }
-};
-
 export const getItemStyle = (
   defaultBg: string,
   defaultBorder: string,
-  range: {
-    bgColor: Array<string>;
-    borderColor: Array<string>;
-    minCount: Array<number>;
-  }
+  range: RangeItem,
+  count?: number
 ) => {
   const { bgColor, borderColor, minCount } = range;
-  
+  const length = minCount.length;
+
+  if (!count) {
+    return {
+      backgroundColor: defaultBg,
+      borderColor: defaultBorder,
+    };
+  }
+  if (count < minCount[0]) {
+    return {
+      backgroundColor: bgColor[0],
+      borderColor: borderColor[0],
+    };
+  }
+  if (count > minCount[length - 1]) {
+    return {
+      backgroundColor: bgColor[length - 1],
+      borderColor: borderColor[length - 1],
+    };
+  }
+  for (let i = 0; i <= length - 1; ) {
+    if (count > minCount[i] && count <= minCount[i + 1]) {
+      return {
+        backgroundColor: bgColor[i],
+        borderColor: borderColor[i],
+      };
+    } else {
+      i++;
+    }
+  }
+};
+
+export const getLegent = (range: RangeItem) => {
+  const { bgColor, borderColor } = range;
+  return bgColor.map((item, index) => ({
+    backgroundColor: item,
+    borderColor: borderColor[index],
+  }));
 };
 
 export const handleDateSource = (

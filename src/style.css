@@ -12,6 +12,12 @@
   line-height: 12px;
   text-align: right;
 }
+.table-wrapper {
+  position: relative;
+}
+.table-wrapper-with-footer {
+  margin-bottom: 24px;
+}
 .table-thead-tr {
   position: relative;
 }
@@ -28,21 +34,7 @@
   background-color: rgb(248, 248, 248);
   border: 1px solid rgb(228, 228, 228);
 }
-.table-tbody-td-none {
-  background-color: rgb(248, 248, 248);
-}
-.table-tbody-td-low {
-  background-color: rgb(185, 227, 185);
-}
-.table-tbody-td-middle {
-  background-color: rgb(127, 190, 127);
-}
-.table-tbody-td-high {
-  background-color: rgb(49, 153, 49);
-}
-.table-tbody-td-super {
-  background-color: rgb(14, 100, 21);
-}
+
 .table-tbody-td-div {
   height: 12px;
   width: 12px;
@@ -62,10 +54,11 @@
   display: flex;
   align-items: center;
   font-size: 12px;
+  gap: 4px;
 }
 .footer-legent-item {
   height: 12px;
   width: 12px;
   border: 1px solid lightgray;
-  margin: 0 4px;
+  /* margin: 0 4px; */
 }
