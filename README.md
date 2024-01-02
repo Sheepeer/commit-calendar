@@ -52,7 +52,7 @@ Then you will see the calendar:
 
 ### range
 
-**Required**. Including three segments:
+<ins>Required</ins>. Including three segments:
 
 - bgColor: Array<string>;
 - borderColor: Array<string>;
@@ -60,18 +60,18 @@ Then you will see the calendar:
 
 ### weekLabelStyles
 
-**Optional**. Including two segments:
+<ins>Optional</ins>. Including two segments:
 
 - color?: string;
 - fontSize?: string;
 
-### monthLabelStyles?: LabelStyles;
+### monthLabelStyles
 
-**Optional**. Same with weekLabelStyles.
+<ins>Optional</ins>. Same with weekLabelStyles.
 
-### itemStyles?: ItemStyles;
+### itemStyles
 
-**Optional**. Including three segments:
+<ins>Optional</ins>. Including three segments:
 
 - bgColor?: string;
 - borderColor?: string;
@@ -79,7 +79,7 @@ Then you will see the calendar:
 
 ### footer
 
-**Optional**. Including five segments:
+<ins>Optional</ins>. Including five segments:
 
 - bottomTip?: React.ReactNode;
 - lessText?: string;
