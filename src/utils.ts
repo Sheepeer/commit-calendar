@@ -1,7 +1,7 @@
-import { DataSource, IDate } from ".";
+import { DataSource, IDate, RangeItem } from ".";
 import * as dayjs from "dayjs";
 
-export const getColor = (count: number) => {
+export const getColor = (count: number, range: RangeItem) => {
   if (count <= 0) {
     return "none";
   } else if (count > 0 && count <= 1) {
@@ -13,6 +13,19 @@ export const getColor = (count: number) => {
   } else if (count > 5) {
     return "super";
   }
+};
+
+export const getItemStyle = (
+  defaultBg: string,
+  defaultBorder: string,
+  range: {
+    bgColor: Array<string>;
+    borderColor: Array<string>;
+    minCount: Array<number>;
+  }
+) => {
+  const { bgColor, borderColor, minCount } = range;
+  
 };
 
 export const handleDateSource = (
