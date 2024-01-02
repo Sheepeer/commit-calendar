@@ -1,14 +1,26 @@
 {
   "name": "commit-calendar",
-  "version": "1.1.1",
-  "description": "",
+  "version": "1.1.2",
+  "description": "A calendar which is like github commit calendar, but the data to be displayed is decided by yourself.",
+  "keywords": [
+    "calendar",
+    "git",
+    "commit"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sheepeer/commit-calendar"
+  },
+  "homepage": "https://sheepeer.github.io/commit-calendar/",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development",
-    "transpile": "babel src -d dist --copy-files"
+    "transpile": "babel src -d dist --copy-files",
+    "build": "webpack --mode production",
+    "deploy": "gh-pages -d examples/dist",
+    "publish-demo": "npm run build & npm run deploy"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -20,6 +32,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^6.8.1",
+    "gh-pages": "^6.1.1",
     "html-webpack-plugin": "^5.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

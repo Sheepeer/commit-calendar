@@ -107,3 +107,7 @@ Then you will see the calendar:
 **v1.1.1** 2023-01-02
 
 - :guitar: Support custom styles
+
+**v1.1.2** 2023-01-02
+
+- :pencil2: Update docs and publish homepage with git pages
